@@ -28,6 +28,11 @@
             z-index: 2; /* Garanta que esteja na frente de outros elementos */
         }
 
+        /* Ajusta o posicionamento do conteúdo final para subir mais na tela */
+        .content.top-positioned {
+            margin-top: -150px;
+        }
+
         /* Estilo do título */
         h1 {
             font-size: 2.5em;
@@ -79,7 +84,7 @@
 
         /* Classe escondida para esconder elementos */
         .hidden {
-            display: none;
+            display: none !important;
         }
 
         /* Estilização da div que conterá os fogos de artifício */
@@ -127,11 +132,7 @@
         .highlight-text {
             font-size: 3em;
             color: black; /* Texto alterado para preto */
-        }
-
-        /* Estilo para posicionar o texto "Marcado para..." mais para cima */
-        .top-message {
-            margin-top: -30px;
+            margin: 0;
         }
 
     </style>
@@ -141,8 +142,8 @@
     <audio id="bg-music" src="images/musica.mp3" preload="auto"></audio>
 
     <!-- Conteúdo principal -->
-    <div class="content">
-        <h1>Querida Duda, você está convidada para sair sábado a noite!</h1>
+    <div class="content" id="main-content">
+        <h1 id="invitation-title">Querida Duda, você está convidada para sair sábado a noite!</h1>
         <p id="question">Aceita?</p>
         <div class="button-container" id="buttons">
             <button id="yes">Sim</button>
@@ -161,16 +162,20 @@
         const message = document.getElementById('message');
         const fireworks = document.getElementById('fireworks');
         const question = document.getElementById('question');
-        const mainTitle = document.querySelector('h1');
+        const mainTitle = document.getElementById('invitation-title');
+        const mainContent = document.getElementById('main-content');
         const music = document.getElementById('bg-music');
 
         // Evento ao clicar no botão "Sim"
         yesButton.addEventListener('click', () => {
             music.play(); // Inicia a reprodução do áudio
-            mainTitle.style.color = 'black'; // Garante que o título principal fique preto
-            message.innerHTML = "<h2 class='highlight-text top-message'>Marcado para 12/09/2026 às 20:00!</h2>"; // Mensagem com estilo reposicionado
+            mainTitle.classList.add('hidden'); // Oculta o texto do convite principal
             buttonsContainer.classList.add('hidden'); // Esconde os botões
+            mainContent.classList.add('top-positioned'); // Sobe o conteúdo restante para a parte superior
+            
             question.innerHTML = "<span class='highlight-text'>Fechou</span>"; // Muda a pergunta para "Fechou"
+            message.innerHTML = "<h2 class='highlight-text'>Marcado para 12/09/2026 às 20:00!</h2>"; // Adiciona a data
+            
             document.body.classList.add('background-active'); // Ativa o fundo com girassóis
             showFireworks(); // Exibe os fogos de artifício
         });
