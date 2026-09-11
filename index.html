@@ -137,6 +137,9 @@
     </style>
 </head>
 <body>
+    <!-- Elemento de áudio escondido -->
+    <audio id="bg-music" src="images/musica.mp3" preload="auto"></audio>
+
     <!-- Conteúdo principal -->
     <div class="content">
         <h1>Querida Duda, você está convidada para sair sábado a noite!</h1>
@@ -159,9 +162,11 @@
         const fireworks = document.getElementById('fireworks');
         const question = document.getElementById('question');
         const mainTitle = document.querySelector('h1');
+        const music = document.getElementById('bg-music');
 
         // Evento ao clicar no botão "Sim"
         yesButton.addEventListener('click', () => {
+            music.play(); // Inicia a reprodução do áudio
             mainTitle.style.color = 'black'; // Garante que o título principal fique preto
             message.innerHTML = "<h2 class='highlight-text top-message'>Marcado para 12/09/2026 às 20:00!</h2>"; // Mensagem com estilo reposicionado
             buttonsContainer.classList.add('hidden'); // Esconde os botões
