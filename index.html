@@ -107,31 +107,6 @@
             }
         }
 
-        /* Estilização da imagem do gato */
-        #cat-image {
-            width: 250px;
-            height: auto;
-            position: absolute;
-            display: none; /* Começa oculta */
-            top: 50px;
-            left: 40%; /* Centralizado horizontalmente */
-            transform: translateX(-50%);
-            animation: bounce 1s ease infinite; /* Animação de "pular" */
-        }
-
-        /* Animação de pulo para a imagem do gato */
-        @keyframes bounce {
-            0% {
-                transform: translateY(0);
-            }
-            65% {
-                transform: translateY(-30px); /* Sobe e desce */
-            }
-            100% {
-                transform: translateY(0);
-            }
-        }
-
         /* Estilo para o plano de fundo ativo */
         body.background-active {
             background-image: url('images/borda-de-girassol-de-design-plano-com-espaco-de-copia_23-2148979244-Photoroom.png');
@@ -162,9 +137,6 @@
     </div>
     <div id="fireworks"></div> <!-- Container onde os fogos de artifício serão exibidos -->
 
-    <!-- Imagem do gato -->
-    <img src="images/jesse.jpg" id="cat-image" alt="Cat Image">
-
     <script>
         // Seleção dos elementos principais do HTML para interação
         const yesButton = document.getElementById('yes');
@@ -173,7 +145,6 @@
         const message = document.getElementById('message');
         const fireworks = document.getElementById('fireworks');
         const question = document.getElementById('question');
-        const catImage = document.getElementById('cat-image');
 
         // Evento ao clicar no botão "Sim"
         yesButton.addEventListener('click', () => {
@@ -216,13 +187,7 @@
 
             setTimeout(() => {
                 fireworks.style.display = 'none'; // Esconde os fogos após 2,8 segundos
-                showCatImage(); // Mostra a imagem do gato
             }, 2800);
-        }
-
-        // Função que exibe a imagem do gato
-        function showCatImage() {
-            catImage.style.display = 'block'; // Mostra a imagem
         }
     </script>
 </body>
