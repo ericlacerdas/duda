@@ -15,7 +15,7 @@
             height: 100vh; /* Ocupa a altura total da tela */
             margin: 0;
             text-align: center;
-            background-color: #f0f0f0;
+            background-color: #e0f2fe; /* Fundo azul bem claro */
             position: relative;
         }
 
@@ -47,31 +47,39 @@
             position: relative;
         }
 
-        /* Estilo dos botões */
+        /* Estilo genérico dos botões */
         button {
             padding: 20px 40px;
             font-size: 1.5em;
             cursor: pointer;
             border: none;
             border-radius: 10px;
-            background-color: #007bff; /* Cor de fundo azul */
-            color: white;
-            transition: background-color 0.3s ease; /* Efeito de transição ao passar o mouse */
+            color: white; /* Texto branco */
+            transition: background-color 0.3s ease; /* Efeito de transição */
         }
 
-        /* Cor de fundo do botão ao passar o mouse */
-        button:hover {
-            background-color: #0056b3;
+        /* Estilo específico do botão SIM */
+        #yes {
+            background-color: #28a745; /* Verde */
         }
 
-        /* Classe escondida para esconder elementos (usada para esconder os botões após clicar em "Sim") */
-        .hidden {
-            display: none;
+        #yes:hover {
+            background-color: #218838; /* Verde mais escuro no hover */
         }
 
-        /* Botão "Não" posicionado de forma relativa para movimentação */
+        /* Estilo específico do botão NÃO */
         #no {
             position: relative;
+            background-color: #dc3545; /* Vermelho */
+        }
+
+        #no:hover {
+            background-color: #c82333; /* Vermelho mais escuro no hover */
+        }
+
+        /* Classe escondida para esconder elementos */
+        .hidden {
+            display: none;
         }
 
         /* Estilização da div que conterá os fogos de artifício */
@@ -150,7 +158,7 @@
         yesButton.addEventListener('click', () => {
             message.innerHTML = "<h2 class='highlight-text'>Marcado para 12/09/2026 às 20:00!</h2>"; // Altera a mensagem
             buttonsContainer.classList.add('hidden'); // Esconde os botões
-            question.innerHTML = "<span class='highlight-text'>Fechou</span>"; // Muda a pergunta para "Aí sim"
+            question.innerHTML = "<span class='highlight-text'>Fechou</span>"; // Muda a pergunta para "Fechou"
             document.body.classList.add('background-active'); // Ativa o fundo com girassóis
             showFireworks(); // Exibe os fogos de artifício
         });
